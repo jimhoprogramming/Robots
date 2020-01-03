@@ -1,0 +1,33 @@
+digraph car{
+	subgraph cluster_car_ctrl{
+		label = "car_ctrl";
+
+		wifi -> moda_1 -> move;
+		wifi -> moda_2 -> move;
+	}
+	
+	subgraph cluster_catch_ctrl{
+		label = "catch_ctrl";
+		wifi -> catch_moda -> catch;
+	}
+
+	subgraph cluster_object_recognise{
+		label = "objetc_recognise";
+		subgraph cluster_cammer_capture{
+			label = "cammer_capture";
+			front_view -> wifi;
+			
+		}
+		subgraph cluster_cnn{
+			label = "cnn";
+			wifi -> videos -> predict_walk -> wifi;
+			videos -> predict_catch -> wifi;
+		}
+	}
+	subgraph cluster_wifi_connect{
+		
+		
+	}
+}
+	
+		
